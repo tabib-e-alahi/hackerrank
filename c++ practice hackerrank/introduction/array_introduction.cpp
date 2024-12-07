@@ -10,8 +10,10 @@ int main()
     {
         cin >> ar[i];
     }
-    increment(&a, &b);
-    cout << a <<endl << b << endl;
+    for(int i = n-1; i >= 0; i--)
+    {
+        cout << ar[i] << " ";
+    }
     return 0;
 }
 
