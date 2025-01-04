@@ -42,9 +42,19 @@ void print_backward(Node* tail)
 void insert_at_tail(Node* &head, Node* &tail, int v)
 {
     Node* newNode = new Node(v);
-    tail->next = newNode;
-    newNode->prev = tail;
-    tail = newNode;
+    if(head == NULL)
+    {
+        head=newNode;
+        tail = newNode;
+    }
+    else
+    {
+        tail->next = newNode;
+        newNode->prev = tail;
+        tail = newNode;
+    }
+    print_forward(head);
+    print_backward(tail);
 }
 
 void insert_at_x_pos(Node* &head, Node* &tail, int x, int v)
@@ -58,7 +68,7 @@ void insert_at_x_pos(Node* &head, Node* &tail, int x, int v)
     Node* tmp = head;
     for(int i =0; i < x-1; i++)
     {
-        if(tmp == NULL)
+        if(tmp == NULL || tmp->next == NULL)
         {
             cout << "Invalid\n";
             return;
@@ -72,12 +82,12 @@ void insert_at_x_pos(Node* &head, Node* &tail, int x, int v)
     else
     {
         newNode->next = tmp->next;
+        newNode->prev = tmp;
         tmp->next->prev = newNode;
         tmp->next = newNode;
-        newNode->prev = tmp;
+        print_forward(head);
+        print_backward(tail);
     }
-    print_forward(head);
-    print_backward(tail);
 }
 
 void insert_at_head(Node* &head, Node* &tail, int v)
