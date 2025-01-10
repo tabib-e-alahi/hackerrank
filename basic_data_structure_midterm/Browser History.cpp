@@ -33,8 +33,8 @@ void next_func(Node* &tmp){
         cout << "Not Available\n";
     }
     else{
-        cout << tmp->val << endl;
         tmp = tmp->next;
+        cout << tmp->val << endl;
     }
 }
 
@@ -43,8 +43,8 @@ void prev_func(Node* &tmp){
         cout << "Not Available\n";
     }
     else{
-        cout << tmp->val << endl;
         tmp = tmp->prev;
+        cout << tmp->val << endl;
     }
 }
 
