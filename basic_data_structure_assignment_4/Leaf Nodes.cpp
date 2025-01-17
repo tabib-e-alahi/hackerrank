@@ -1,3 +1,4 @@
+
 #include<bits/stdc++.h>
 using namespace std;
 class Node
@@ -64,26 +65,26 @@ Node* input_tree()
 
     return root;
 }
-long long sum;
-long long sum_of_nodes(Node* root){
+vector<int> v;
+void print_leaf_nodes(Node* root){
     if(root == NULL){
-        return 0;
+        return;
     }
-    if((root->left != NULL && root->right != NULL) || (root->left != NULL && root->right == NULL) || (root->left == NULL && root->right != NULL)){
-        sum += root->val;
+    if(root->left == NULL && root->right == NULL){
+        v.push_back(root->val);
     }
 
-    long long l = sum_of_nodes(root->left);
-    long long r = sum_of_nodes(root->right);
-
-    return l+r;
+    print_leaf_nodes(root->left);
+    print_leaf_nodes(root->right);
 }
 
 int main()
 {
     Node* root = input_tree();
-    sum = 0;
-    long long res = sum_of_nodes(root);
-    cout << sum << endl;
+    print_leaf_nodes(root);
+    sort(v.begin(), v.end(), greater<>());
+    for(auto i: v){
+        cout << i << " ";
+    }
     return 0;
 }
