@@ -102,7 +102,6 @@ int main()
     else{
         cout << "NO\n";
     }
-    cout << endl << pow(2,d) << endl << d <<endl;
     return 0;
 }
 
