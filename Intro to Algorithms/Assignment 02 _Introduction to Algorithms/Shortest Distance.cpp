@@ -37,17 +37,5 @@ int main()
         }
     }
 
-    for (int i = 1; i <= n; i++)
-    {
-        for (int j = 1; j <= n; j++)
-        {
-            if (adj_mat[i][j] == LLONG_MAX)
-            {
-                cout << "LL ";
-            }
-            else
-                cout << adj_mat[i][j] << " ";
-        }
-        cout << endl;
-    }
+
 }
