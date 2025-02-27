@@ -14,6 +14,8 @@ int dis[1005];
 vector<Edge> edge_list;
 int n, e;
 
+void bellman_ford()
+
 int main()
 {
     cin >> n >> e;
@@ -23,9 +25,15 @@ int main()
         cin >> a >> b >> w;
         edge_list.push_back(Edge(a, b, w));
     }
-
-    for(auto ed: edge_list)
+    for(int i = 0; i <= n; i++)
     {
-        cout << ed.a << " " << ed.b << " " << ed.w << endl;
+        dis[i] = INT_MAX;
     }
+    int s;
+    cin >> s;
+    dis[s] = 0;
+    
+    bellman_ford();
+
+    return 0;
 }
