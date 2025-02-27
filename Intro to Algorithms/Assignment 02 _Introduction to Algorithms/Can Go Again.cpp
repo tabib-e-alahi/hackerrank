@@ -3,8 +3,9 @@ using namespace std;
 class Edge
 {
 public:
-    int a, b, w;
-    Edge(int a, int b, int w)
+    int a, b; 
+    long long w;
+    Edge(int a, int b, long long w)
     {
         this->a = a;
         this->b = b;
@@ -21,7 +22,8 @@ void bellman_ford()
     {
         for (auto ed : edge_list)
         {
-            int a, b, w;
+            int a, b;
+            long long w;
             a = ed.a;
             b = ed.b;
             w = ed.w;
@@ -34,7 +36,8 @@ void bellman_ford()
     bool cycle = false;
     for (auto ed : edge_list)
     {
-        int a, b, w;
+        int a, b;
+        long long w;
         a = ed.a;
         b = ed.b;
         w = ed.w;
@@ -76,7 +79,8 @@ int main()
     cin >> n >> e;
     while (e--)
     {
-        int a, b, w;
+        int a, b;
+        long long w;
         cin >> a >> b >> w;
         edge_list.push_back(Edge(a, b, w));
     }
