@@ -3,7 +3,7 @@ using namespace std;
 class Edge
 {
 public:
-    int a, b; 
+    int a, b;
     long long w;
     Edge(int a, int b, long long w)
     {
@@ -15,10 +15,11 @@ public:
 int dis[1005];
 vector<Edge> edge_list;
 int n, e;
+bool cycle = false;
 
 void bellman_ford()
 {
-    for (int i = 0; i < n - 1; i++)
+    for (int i = 1; i <= n - 1; i++)
     {
         for (auto ed : edge_list)
         {
@@ -33,7 +34,7 @@ void bellman_ford()
         }
     }
 
-    bool cycle = false;
+    
     for (auto ed : edge_list)
     {
         int a, b;
@@ -49,29 +50,6 @@ void bellman_ford()
         }
     }
 
-    if (cycle)
-    {
-        cout << "Negative Cycle Detected\n";
-        return;
-    }
-    else
-    {
-        int q;
-        cin >> q;
-        while (q--)
-        {
-            int d;
-            cin >> d;
-            if (dis[d] == INT_MAX)
-            {
-                cout << "Not Possible\n";
-            }
-            else
-            {
-                cout << dis[d] << endl;
-            }
-        }
-    }
 }
 
 int main()
@@ -93,6 +71,25 @@ int main()
     dis[s] = 0;
 
     bellman_ford();
-
+    
+    if(cycle)
+    {
+        cout << "Negative Cycle Detected\n";
+    } 
+    else{
+        int q;
+        cin >> q;
+        while(q--)
+        {
+            int d;
+            cin >> d;
+            if(dis[d] == INT_MAX){
+                cout << "Not Possible\n";
+            }
+            else{
+                cout << dis[d] << endl;
+            }
+        }
+    }  
     return 0;
 }
