@@ -37,5 +37,17 @@ int main()
         }
     }
 
+    int q;
+    cin >> q;
+    while(q--)
+    {
+        int s, d;
+        cin >> s >> d;
+        if(adj_mat[s][d] == LLONG_MAX)
+            cout << -1 << endl;
+        else    
+            cout << adj_mat[s][d] << endl;
+    }
 
+    return 0;
 }
