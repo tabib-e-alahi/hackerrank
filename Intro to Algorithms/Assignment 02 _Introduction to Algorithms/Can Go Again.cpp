@@ -46,23 +46,29 @@ void bellman_ford()
         }
     }
 
-    if(cycle)
+    if (cycle)
+    {
         cout << "Negative Cycle Detected\n";
-    else{
+        return;
+    }
+    else
+    {
         int q;
         cin >> q;
-        while(q--)
+        while (q--)
         {
             int d;
             cin >> d;
-            if(dis[d] == INT_MAX){
+            if (dis[d] == INT_MAX)
+            {
                 cout << "Not Possible\n";
             }
-            else{
+            else
+            {
                 cout << dis[d] << endl;
             }
         }
-    }    
+    }
 }
 
 int main()
