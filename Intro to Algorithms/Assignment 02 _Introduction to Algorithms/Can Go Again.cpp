@@ -4,15 +4,15 @@ class Edge
 {
 public:
     int a, b;
-    long long w;
-    Edge(int a, int b, long long w)
+    long long int w;
+    Edge(int a, int b, long long int w)
     {
         this->a = a;
         this->b = b;
         this->w = w;
     }
 };
-int dis[1005];
+long long int dis[1005];
 vector<Edge> edge_list;
 int n, e;
 bool cycle = false;
@@ -24,12 +24,12 @@ void bellman_ford()
         for (auto ed : edge_list)
         {
             int a, b;
-            long long w;
+            long long int w;
             a = ed.a;
             b = ed.b;
             w = ed.w;
 
-            if (dis[a] != INT_MAX && dis[a] + w < dis[b])
+            if (dis[a] != LLONG_MAX && dis[a] + w < dis[b])
                 dis[b] = dis[a] + w;
         }
     }
@@ -38,12 +38,12 @@ void bellman_ford()
     for (auto ed : edge_list)
     {
         int a, b;
-        long long w;
+        long long int w;
         a = ed.a;
         b = ed.b;
         w = ed.w;
 
-        if (dis[a] != INT_MAX && dis[a] + w < dis[b])
+        if (dis[a] != LLONG_MAX && dis[a] + w < dis[b])
         {
             cycle = true;
             break;
@@ -58,13 +58,13 @@ int main()
     while (e--)
     {
         int a, b;
-        long long w;
+        long long int w;
         cin >> a >> b >> w;
         edge_list.push_back(Edge(a, b, w));
     }
     for (int i = 0; i <= n; i++)
     {
-        dis[i] = INT_MAX;
+        dis[i] = LLONG_MAX;
     }
     int s;
     cin >> s;
@@ -83,7 +83,7 @@ int main()
         {
             int d;
             cin >> d;
-            if(dis[d] == INT_MAX){
+            if(dis[d] == LLONG_MAX){
                 cout << "Not Possible\n";
             }
             else{
@@ -91,5 +91,6 @@ int main()
             }
         }
     }  
+
     return 0;
 }
